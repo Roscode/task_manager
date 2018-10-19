@@ -9,14 +9,17 @@
   </head>
   <body>
     <div class="container-fluid">
-      <nav class="navbar navbar-extend-sm navbar-light bg-white">
+      <nav class="navbar navbar-extend-sm navbar-light">
         <div class="col-3">
           <%= link("Task Manager", to: "/", class: "navbar-brand") %>
         </div>
         <div class="col-md-auto">
-          <ul class="navbar-nav mr-auto">
+          <ul class="nav">
             <li class="nav-item active">
               <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <%= link("Tasks", to: "/tasks", class: "nav-link") %>
             </li>
           </ul>
         </div>
