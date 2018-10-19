@@ -35,7 +35,7 @@ defmodule TaskManager.Tasks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_task!(id), do: Repo.get!(Task, id)
+  def get_task!(id), do: Repo.get!(Task, id) |> Repo.preload(:assignee)
 
   @doc """
   Creates a task.
@@ -69,6 +69,7 @@ defmodule TaskManager.Tasks do
   """
   def update_task(%Task{} = task, attrs) do
     task
+    |> Repo.preload(:assignee)
     |> Task.changeset(attrs)
     |> Repo.update()
   end

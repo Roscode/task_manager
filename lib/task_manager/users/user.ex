@@ -1,12 +1,13 @@
 defmodule TaskManager.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias TaskManager.Tasks.Task
 
 
   schema "users" do
     field :admin, :boolean, default: false
     field :email, :string
-    has_many :tasks, TaskManager.Tasks.Task
+    has_many :tasks, Task
 
     timestamps()
   end
