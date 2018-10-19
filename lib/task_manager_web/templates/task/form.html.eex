@@ -32,7 +32,7 @@
   <div class="form-row align-items-center">
     <div class="form-group">
       <%= label f, :time_worked %>
-      <%= number_input f, :time_worked, step: "15", class: "form-control" %>
+      <%= number_input f, :time_worked, step: "15", class: "form-control", disabled: @changeset.data.assignee != @current_user %>
       <%= error_tag f, :time_worked %>
     </div>
   </div>

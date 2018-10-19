@@ -3,7 +3,9 @@
     <h1>Task Manager</h1>
   </div>
   <%= if @current_user do %>
-    <h2>My Tasks</h2>
+    <div class="col-6">
+      <%= link "Tasks", to: Routes.task_path(@conn, :index), class: "btn-btn-primary" %>
+    </div>
   <% else %>
     <div class="col-6">
       <%= link "Register", to: Routes.user_path(@conn, :new), class: "btn btn-primary" %>

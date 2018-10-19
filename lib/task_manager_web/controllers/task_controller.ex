@@ -10,7 +10,7 @@ defmodule TaskManagerWeb.TaskController do
 
   def index(conn, _params) do
     tasks = Tasks.list_tasks()
-    render(conn, "index.html", tasks: tasks)
+    render(conn, "index.html", tasks: tasks |> Repo.preload(:assignee))
   end
 
   defp get_all_users() do
