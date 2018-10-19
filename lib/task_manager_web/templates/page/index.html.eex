@@ -3,10 +3,10 @@
     <h1>Task Manager</h1>
   </div>
   <%= if @current_user do %>
-    <p>Hey wutup</p>
+    <h2>My Tasks</h2>
   <% else %>
     <div class="col-6">
-      <%= link "Register", to: Routes.user_path(@conn, :new) %>
+      <%= link "Register", to: Routes.user_path(@conn, :new), class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
