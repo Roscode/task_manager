@@ -11,12 +11,12 @@
     <div class="container">
       <nav class="navbar navbar-extend-sm navbar-light bg-white">
         <div class="col-4">
-          <a class="navbar-brand" href="#">Task Manager</a>
+          <%= link("Task Manager", to: "/", class: "navbar-brand") %>
         </div>
         <div class="col-4">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
           </ul>
         </div>
