@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export MIX_ENV=prod
+export PORT=4747
 export NODEBIN=`pwd`/assets/node_modules/.bin
 export PATH="$PATH:$NODEBIN"
 
@@ -10,8 +11,7 @@ mkdir -p ~/.config
 
 mix deps.get
 (cd assets && npm install)
-mix ecto.create
-mix ecto.migrate
+mix ecto.reset
 (cd assets && webpack --mode production)
 mix phx.digest
 mix compile

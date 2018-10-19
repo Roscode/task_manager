@@ -6,6 +6,7 @@ defmodule TaskManager.Repo.Migrations.CreateTasks do
       add :name, :string
       add :description, :text
       add :completed, :boolean, default: false, null: false
+      add :assignee_id, references(:users, on_delete: :nilify_all)
 
       timestamps()
     end
