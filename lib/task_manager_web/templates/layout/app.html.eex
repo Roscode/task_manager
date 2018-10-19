@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <nav class="navbar navbar-extend-sm navbar-light bg-white">
-        <div class="col-4">
+        <div class="col-3">
           <%= link("Task Manager", to: "/", class: "navbar-brand") %>
         </div>
-        <div class="col-4">
+        <div class="col-md-auto">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="/">Home</a>
             </li>
           </ul>
         </div>
-        <div class="col-4">
+        <div class="col-md-auto">
           <%= if @current_user do %>
             <p class="my-3">
               User: <%= @current_user.email %> |
