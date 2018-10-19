@@ -18,15 +18,23 @@
   </div>
 
   <div class="form-check">
-    <%= label f, :completed %>
-    <%= checkbox f, :completed, class: "form-control" %>
+    <%= checkbox f, :completed, class: "form-check-input" %>
+    <%= label f, :completed, class: "form-check-label" %>
     <%= error_tag f, :completed %>
   </div>
 
   <div class="form-group">
     <%= label f, :assignee %>
     <%= select f, :assignee_id, [{"No Assignee", nil}|@users]%>
-    <%= error_tag f, :assignee %>
+    <%= error_tag f, :assignee_id %>
+  </div>
+
+  <div class="form-row align-items-center">
+    <div class="form-group">
+      <%= label f, :time_worked %>
+      <%= number_input f, :time_worked, step: "15", class: "form-control" %>
+      <%= error_tag f, :time_worked %>
+    </div>
   </div>
 
   <div>

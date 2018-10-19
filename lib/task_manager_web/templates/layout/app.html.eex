@@ -10,7 +10,7 @@
   <body>
     <div class="container-fluid">
       <nav class="navbar navbar-extend-sm navbar-light">
-        <div class="col-3">
+        <div class="col-2">
           <%= link("Task Manager", to: "/", class: "navbar-brand") %>
         </div>
         <div class="col-md-auto">
