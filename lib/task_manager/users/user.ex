@@ -8,6 +8,8 @@ defmodule TaskManager.Users.User do
     field :admin, :boolean, default: false
     field :email, :string
     has_many :tasks, Task, foreign_key: :assignee_id
+    belongs_to :manager, User
+    has_many :underlings, USer, foreign_key: :manager_id
 
     timestamps()
   end
