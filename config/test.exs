@@ -24,6 +24,6 @@ end
 config :task_manager, TaskManager.Repo,
   username: "task_manager_dev",
   password: get_secret.("dev_db_pass"),
-  database: "task_manager_test",
+  database: "task_manager2_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

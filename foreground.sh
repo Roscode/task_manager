@@ -1,4 +1,6 @@
-export PORT=4747
+#!/bin/bash
+
+export PORT=4748
 
 echo "Stopping old copy of app, if any..."
 

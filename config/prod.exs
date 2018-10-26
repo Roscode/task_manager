@@ -1,5 +1,17 @@
 use Mix.Config
 
+get_secret = fn name ->
+  base = Path.expand("~/.config/task_manager")
+  File.mkdir_p!(base)
+  path = Path.join(base, name)
+  unless File.exists?(path) do
+    secret = Base.encode16(:crypto.strong_rand_bytes(32))
+    File.write!(path, secret)
+  end
+  String.trim(File.read!(path))
+end
+
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.
@@ -13,6 +25,7 @@ config :task_manager, TaskManagerWeb.Endpoint,
   server: true,
   root: ".",
   version: Application.spec(:phoenix_distillery, :vsn),
+  secret_key_base: get_secret.("key_base"),
   http: [:inet6, port: {:system, "PORT"}],
   url: [host: "tasks1.roscode.party", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
@@ -69,33 +82,9 @@ config :logger, level: :info
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
 
-use Mix.Config
-
-get_secret = fn name ->
-  base = Path.expand("~/.config/task_manager")
-  File.mkdir_p!(base)
-  path = Path.join(base, name)
-  unless File.exists?(path) do
-    secret = Base.encode16(:crypto.strong_rand_bytes(32))
-    File.write!(path, secret)
-  end
-  String.trim(File.read!(path))
-end
-
-# In this file, we keep production configuration that
-# you'll likely want to automate and keep away from
-# your version control system.
-#
-# You should document the content of this
-# file or create a script for recreating it, since it's
-# kept out of version control and might be hard to recover
-# or recreate for your teammates (or yourself later on).
-config :task_manager, TaskManagerWeb.Endpoint,
-  secret_key_base: get_secret.("key_base");
-
 # Configure your database
 config :task_manager, TaskManager.Repo,
   username: "task_manager",
   password: get_secret.("db_pass"),
-  database: "task_manager_prod",
+  database: "task_manager2_prod",
   pool_size: 15

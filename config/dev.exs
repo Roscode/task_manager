@@ -81,6 +81,6 @@ end
 config :task_manager, TaskManager.Repo,
   username: "task_manager_dev",
   password: get_secret.("dev_db_pass"),
-  database: "task_manager_dev",
+  database: "task_manager2_dev",
   hostname: "localhost",
   pool_size: 10
