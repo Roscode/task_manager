@@ -62,5 +62,6 @@ release :task_manager do
   set applications: [
     :runtime_tools
   ]
+  set vm_args: "rel/vm.args"
 end
 
