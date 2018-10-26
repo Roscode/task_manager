@@ -7,7 +7,7 @@ defmodule TaskManager.Users.User do
   schema "users" do
     field :admin, :boolean, default: false
     field :email, :string
-    has_many :tasks, Task
+    has_many :tasks, Task, foreign_key: :assignee_id
 
     timestamps()
   end
