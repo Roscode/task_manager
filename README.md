@@ -12,5 +12,4 @@ update.sh is essentially the "GO" button for prod
 
 ## Design decisions
 
-The major design decision I struggled with was how to represent time worked on a task. Originally I thought maybe I would have another table that held a user, a task, and how long that user had worked on that task. And I do think that is the better design, but I ran out of time before I could implement it so I went with a quicker and easier solution of having a task keep track of time worked on it by anybody, but only allow the assigned user to log time on the task.
-
+The first major design decision was how to support both the previous version and the new version of the app, besides changing the name configuration in the app I also changed the database name for this project so that the old one can remain untouched by the new.
