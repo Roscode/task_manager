@@ -3,15 +3,22 @@ defmodule TaskManagerWeb.UserController do
 
   alias TaskManager.Users
   alias TaskManager.Users.User
+  alias TaskManager.Repo
+
+  import Ecto.Query
 
   def index(conn, _params) do
     users = Users.list_users()
-    render(conn, "index.html", users: users)
+    render(conn, "index.html", users: users )
+  end
+
+  def get_select_users() do
+    Repo.all(from u in User, select: {u.name, u.id})
   end
 
   def new(conn, _params) do
     changeset = Users.change_user(%User{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, users: get_select_users())
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -35,7 +42,7 @@ defmodule TaskManagerWeb.UserController do
   def edit(conn, %{"id" => id}) do
     user = Users.get_user!(id)
     changeset = Users.change_user(user)
-    render(conn, "edit.html", user: user, changeset: changeset)
+    render(conn, "edit.html", users: get_select_users(), user: user, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
@@ -48,7 +55,7 @@ defmodule TaskManagerWeb.UserController do
         |> redirect(to: Routes.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", user: user, changeset: changeset)
+        render(conn, "edit.html", users: get_select_users(), user: user, changeset: changeset)
     end
   end
 

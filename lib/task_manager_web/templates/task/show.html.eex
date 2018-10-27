@@ -1,11 +1,6 @@
-<h1>Show Task</h1>
+<h1>Task: <%= @task.name %></h1>
 
 <ul class="list-group">
-
-  <li class="list-group-item">
-    <strong>Name:</strong>
-    <%= @task.name %>
-  </li>
 
   <li class="list-group-item">
     <strong>Description:</strong>

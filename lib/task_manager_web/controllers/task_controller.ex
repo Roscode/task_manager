@@ -14,7 +14,7 @@ defmodule TaskManagerWeb.TaskController do
   end
 
   defp get_all_users() do
-    Repo.all(from u in User, select: {u.email, u.id})
+    Repo.all(from u in User, select: {u.name, u.id})
   end
 
   def new(conn, _params) do

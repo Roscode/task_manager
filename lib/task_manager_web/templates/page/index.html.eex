@@ -1,10 +1,7 @@
 <div class="row">
-  <div class="col-12">
-    <h1>Task Manager</h1>
-  </div>
   <%= if @current_user do %>
-    <div class="col-6">
-      <%= link "Tasks", to: Routes.task_path(@conn, :index), class: "btn-btn-primary" %>
+    <div class="col">
+      <%= render TaskManagerWeb.TaskView, "index.html", conn: @conn, tasks: @current_user.tasks, header: "My Tasks"%>
     </div>
   <% else %>
     <div class="col-6">

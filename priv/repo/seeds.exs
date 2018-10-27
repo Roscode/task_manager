@@ -12,5 +12,6 @@
 alias TaskManager.Repo
 alias TaskManager.Users.User
 
-Repo.insert!(%User{email: "darren@roscode.party", admin: true})
-Repo.insert!(%User{email: "bob@example.com", admin: false})
+darren = Repo.insert!(%User{email: "darren@roscode.party", admin: true})
+bob = Repo.insert!(%User{email: "bob@example.com", admin: false})
+heyo = Repo.insert!(%User{email: "heyoit'smetheuser", admin: false, manager_id: darren})

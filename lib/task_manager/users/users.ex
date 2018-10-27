@@ -18,7 +18,9 @@ defmodule TaskManager.Users do
 
   """
   def list_users do
-    Repo.all(User)
+    User
+    |> Repo.all()
+    |> Repo.preload(:manager)
   end
 
   @doc """
@@ -35,14 +37,14 @@ defmodule TaskManager.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id), do: User |> Repo.get!(id) |> Repo.preload([:manager, :underlings, {:tasks, :assignee}])
 
   @doc """
   Gets an option on a single user
 
   Returns None if the user does not exist
   """
-  def get_user(id), do: Repo.get(User, id)
+  def get_user(id), do: User |> Repo.get(id) |> Repo.preload([:manager, :underlings, {:tasks, :assignee}])
 
   @doc """
   Gets a single user by email

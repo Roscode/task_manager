@@ -25,17 +25,24 @@
 
   <div class="form-group">
     <%= label f, :assignee %>
-    <%= select f, :assignee_id, [{"No Assignee", nil}|@users]%>
+    <%= select f, :assignee_id, [{"No Assignee", nil}
+      |[{@changeset.data.assignee.name,
+      @changeset.data.assignee.id}|
+      Enum.filter(@users, fn (u) ->
+      (@current_user.underlings === u)
+      end)]]
+|> Enum.dedup() %>
     <%= error_tag f, :assignee_id %>
   </div>
 
-  <div class="form-row align-items-center">
-    <div class="form-group">
-      <%= label f, :time_worked %>
-      <%= number_input f, :time_worked, step: "15", class: "form-control", disabled: @changeset.data.assignee != @current_user %>
-      <%= error_tag f, :time_worked %>
-    </div>
-  </div>
+  <!-- Time Coming soon! -->
+  <%# <div class="form-row align-items-center"> %>
+  <%#   <div class="form-group"> %>
+  <%#     <%= label f, :time_worked %1> %>
+  <%#     <%= number_input f, :time_worked, step: "15", class: "form-control", disabled: @changeset.data.assignee != @current_user %1> %>
+  <%#     <%= error_tag f, :time_worked %1> %>
+  <%#   </div> %>
+  <%# </div> %>
 
   <div>
     <%= submit "Save", class: "btn btn-primary" %>
